@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/zed/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/activity_list_item.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/zed/StudioProjects/graphSample/app/src/main/res/layout/activity_candle_stick_graph.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/zed/StudioProjects/graphSample/app/src/main/res/layout/activity_combined_chart.xml" value="0.3671875" />
+        <entry key="..\:/Users/zed/StudioProjects/graphSample/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/zed/StudioProjects/graphSample/app/src/main/res/layout/activity_needle_stick_graph.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/zed/StudioProjects/graphSample/app/src/main/res/layout/combined_chart_marker_view.xml" value="0.3671875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
