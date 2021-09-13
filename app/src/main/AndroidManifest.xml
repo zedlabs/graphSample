@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraphSample">
         <activity
+            android:name=".LineChartActivity"
+            android:exported="true" />
+        <activity
             android:name=".CombinedChartActivity"
             android:exported="true" />
         <activity

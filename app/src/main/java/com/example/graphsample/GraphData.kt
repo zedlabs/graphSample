@@ -41,7 +41,7 @@ object GraphData {
 //        CandleEntry(33F, 228.0F, 219.84F, 224.94F, 219.07F),
 //        CandleEntry(34F, 226.0F, 219.84F, 221.94F, 224.07F),
     ).also {
-        for(i in 0..168) {
+        for(i in 0..60) {
             if(i%2 == 0) it.add(CandleEntry(i.toFloat(), 225.0F+(0..10).random(), 219.84F+(0..10).random(), 219.94F+(0..10).random(), 221.07F+(0..10).random()))
             else it.add(CandleEntry(i.toFloat(), 228.0F+(0..10).random(), 219.84F+(0..10).random(), 224.94F+(0..10).random(), 219.07F+(0..10).random()))
         }
