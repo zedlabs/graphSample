@@ -26,6 +26,9 @@ class CombinedChartMarkerView constructor(
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
         Log.e("", "refreshContent: ${e?.y} :: ${e?.data} :: ${e?.x}")
+        tv1?.text = "${e?.y}"
+        tv2?.text = "${e?.data}"
+        tv3?.text = "${e?.x}"
     }
 
 }

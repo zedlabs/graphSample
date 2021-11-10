@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         val candleStickGraphButton: Button = findViewById(R.id.candlestick_btn)
         val combinedGraphButton: Button = findViewById(R.id.combined_graph_btn)
         val lineChartButton: Button = findViewById(R.id.line_chart_button)
+        val combinedChart2: Button = findViewById(R.id.combined_graph_btn_2)
 
         candleStickGraphButton.setOnClickListener {
             startActivity(Intent(this, CandleStickGraphActivity::class.java))
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         lineChartButton.setOnClickListener {
             startActivity(Intent(this, LineChartActivity::class.java))
+        }
+
+        combinedChart2.setOnClickListener {
+            startActivity(Intent(this, CombinedChart2Activity::class.java))
         }
     }
 }

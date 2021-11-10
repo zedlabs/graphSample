@@ -22,9 +22,13 @@ import com.github.mikephil.charting.components.XAxis
 
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.data.BarData
 
-class CombinedChartActivity : AppCompatActivity() {
+import com.github.mikephil.charting.data.BarDataSet
 
+import com.github.mikephil.charting.data.BarEntry
+
+class CombinedChart2Activity : AppCompatActivity() {
     val count = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,8 +66,8 @@ class CombinedChartActivity : AppCompatActivity() {
 
 
         val leftAxis = chart.axisLeft
+        leftAxis.axisLineColor = Color.WHITE
         leftAxis.setDrawGridLines(false)
-       leftAxis.isEnabled = false
         //leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
 
 
@@ -80,13 +84,15 @@ class CombinedChartActivity : AppCompatActivity() {
 
         val data = CombinedData()
         val barData = generateBarData()
+        val lineData = generateLineData()
         //barData.barWidth = .2f
         data.setData(barData)
-        data.setData(generateLineData())
+        data.setData(lineData)
 
         //data.setValueTypeface(tfLight)
 
-        xAxis.axisMaximum = data.xMax + .99f
+        xAxis.axisMaximum = data.xMax + .4f
+        xAxis.axisMinimum = data.xMin - 0.2f
 
         chart.data = data
         chart.marker = CombinedChartMarkerView(this, R.layout.combined_chart_marker_view, listOf())
@@ -106,7 +112,7 @@ class CombinedChartActivity : AppCompatActivity() {
         set.lineWidth = 2.5f
 //        set.setCircleColor(Color.rgb(240, 238, 70))
 //        set.circleRadius = 5f
-       // set.fillColor = Color.rgb(240, 238, 70)
+        // set.fillColor = Color.rgb(240, 238, 70)
         //set.mode = LineDataSet.Mode.
         //set.setDrawValues(true)
         set.valueTextSize = 10f
@@ -121,34 +127,30 @@ class CombinedChartActivity : AppCompatActivity() {
     }
 
     private fun generateBarData(): BarData {
-        val entries1: ArrayList<BarEntry> = ArrayList()
+        //val entries1: ArrayList<BarEntry> = ArrayList()
         val entries2: ArrayList<BarEntry> = ArrayList()
         for (index in 0 until count) {
-            entries1.add(BarEntry(index.toFloat(),(10..25).random().toFloat()))
-            entries2.add(BarEntry(index.toFloat(),(-7..-2).random().toFloat()))
+            // stacked i.e the values are stacked and compound on one another
+            entries2.add(BarEntry(index.toFloat(), floatArrayOf((-20..-1).random().toFloat(), (12..13).random().toFloat(), (12..13).random().toFloat())))
         }
-        val set1 = BarDataSet(entries1, "Bar 1")
-        set1.color = resources.getColor(R.color.bar1)
-        set1.valueTextColor = Color.rgb(60, 220, 78)
-        set1.valueTextSize = 10f
-        set1.axisDependency = YAxis.AxisDependency.RIGHT
-        set1.setDrawValues(false)
         val set2 = BarDataSet(entries2, "")
         set2.stackLabels = arrayOf("Stack 1", "Stack 2")
-        set2.color = resources.getColor(R.color.bar2)
-        set2.valueTextColor = Color.rgb(61, 165, 255)
-        set2.valueTextSize = 10f
-        set2.axisDependency = YAxis.AxisDependency.RIGHT
-        set2.setDrawValues(false)
-        val groupSpace = .46f
-        val barSpace = 0.02f // x2 dataset
-        val barWidth = 0.25f // x2 dataset
+
+        //set the colors of the stacks
+        set2.setColors(Color.rgb(61, 165, 255), Color.rgb(23, 197, 255), Color.rgb(34,139,34))
+        //set2.valueTextColor = Color.rgb(61, 165, 255)
+        //set2.valueTextSize = 10f
+        //set2.setDrawValues(false)
+        set2.axisDependency = YAxis.AxisDependency.LEFT
+//        val groupSpace = 0.06f
+//        val barSpace = 0.02f // x2 dataset
+//        val barWidth = 0.45f // x2 dataset
         // (0.45 + 0.02) * 2 + 0.06 = 1.00 -> interval per "group"
-        val d = BarData(set1, set2)
-        d.barWidth = barWidth
-        //d.getGroupWidth()
+        val d = BarData(set2)
+        d.barWidth = 0.3f
+
         // make this BarData object grouped
-        d.groupBars(-.24f, groupSpace, barSpace) // start at x = 0
+        //d.groupBars(0f, groupSpace, barSpace) // start at x = 0
         return d
     }
 }
